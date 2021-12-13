@@ -1,14 +1,17 @@
 <template>
   <div class="products">
-      <div class="book">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/51eqjXwFzwL._SX344_BO1,204,203,200_.jpg"
-          alt="Simyaci"
+    <div 
+      class="book"
+      v-for="book in this.getBookList"
+      :key="book.id">
+      <img
+          :src="book.image"
+          :alt="book.name"
         />
         <div>
-          <h4>Simyaci</h4>
-          <p>Yazar: Paulo Coelho</p>
-          <p>Fiyat: &#8378; 19.99</p>
+          <h4>{{book.name}}</h4>
+          <p>Yazar: {{book.author}}</p>
+          <p>Fiyat: &#8378; {{book.price}}</p>
           <button class="btn btn-primary">Sepete Ekle</button>
         </div>
       </div>
@@ -16,10 +19,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Products',
-  props: {
- 
+  data(){
+    return{
+
+    }
+  },
+  computed:{
+    ...mapGetters(['getBookList'])
   }
 }
 </script>

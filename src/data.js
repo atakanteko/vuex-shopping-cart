@@ -21,7 +21,7 @@ export const data = [
       author: "Zana Muhsen",
       price: 16.99,
       image:
-        "https://content.babil.com/urun/13df0fdbdfbe477d8c8ee30d2e15292c/Front/Big"
+        "https://1k-cdn.com/resimler/kitaplar/94029_7cad1_1570822946.jpg"
     },
     {
       id: 4,
