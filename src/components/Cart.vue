@@ -1,30 +1,45 @@
 <template>
   <div class="cart">
-    <h3>Toplam Sepet Tutarı: &#8378;19.99</h3>
-      <div class="book">
+    <h3 style="color:red">Toplam Sepet Tutarı: &#8378;{{getCurrentPrice}}</h3>
+    <h5 >Sepette Bulunan Kitap Adeti: {{getCurrentNumberOfBooks}}</h5>
+      <div
+       class="book" 
+       v-for="item in getShoppingCart" 
+       :key="item.id">
         <img
-          src="https://images-na.ssl-images-amazon.com/images/I/51eqjXwFzwL._SX344_BO1,204,203,200_.jpg"
-          alt="Simyacı"
+          :src="item.image"
+          :alt="item.name"
         />
         <div>
-          <h4>Simyaci</h4>
-          <p>Yazar: Paulo Coelho</p>
-          <p>Fiyat: &#8378;19.99</p>
-          <p>Toplam: &#8378;19.99</p>
-          <p>Sepetinizde bu kitaptan toplam 1 adet var.</p>
+          <h4>{{item.name}}</h4>
+          <p>Yazar: {{item.author}}</p>
+          <p>Fiyat: &#8378; {{item.price}}</p>
           <button class="btn btn-warning">-</button>
           <button class="btn btn-primary">Sepetten Çıkar</button>
           <button class="btn btn-warning">+</button>
         </div>
       </div>
+     
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   name: 'Products',
-  props: {
- 
+  data(){
+    return{
+
+    }
+  },
+  computed:{
+    ...mapGetters(['getShoppingCart']),
+    getCurrentPrice(){
+      return this.getShoppingCart.reduce((total, item) => (total += item.price),0)
+    },
+    getCurrentNumberOfBooks(){
+      return this.getShoppingCart.length
+    }
   }
 }
 </script>

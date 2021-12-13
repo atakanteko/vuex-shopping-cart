@@ -9,16 +9,25 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
 
     state : {
-        bookList: data
+        bookList: data,
+        shoppingCart: [],
     },
     getters: {
-        getBookList: (state) => state.bookList
-    },
-    mutations: {
-
+        getBookList: (state) => state.bookList,
+        getShoppingCart: (state) => state.shoppingCart
     },
     actions: {
-        
+        addToCart:({commit},payload) => {
+            const book = data.find(i => i.id == payload)
+            commit('ADD_TO_CART',book)
+        }
     },
+    mutations: {
+        'ADD_TO_CART':(state,payload) => {
+            console.log(payload);
+            state.shoppingCart.unshift(payload)
+        }
+    },
+    
    
 })
