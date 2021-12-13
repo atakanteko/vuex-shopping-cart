@@ -8,12 +8,14 @@ import Cart from './components/Cart'
 
 const routes = [
     {
-        path: '/',
-        component: Products
+        path: '/home',
+        component: Products,
+        name: 'home'
     },
     {
         path: '/cart',
-        component: Cart
+        component: Cart,
+        name:'cart'
     }
 ]
 

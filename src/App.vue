@@ -1,18 +1,16 @@
 <template>
   <div id="app" class="container">
-   <h1>Alışveriş Sepeti</h1>
+   <nav-bar/>
    <router-view/>
   </div>
 </template>
 
 <script>
-
-
-
+import Navigation from './components/Navigation.vue'
 export default {
   name: 'App',
   components: {
-  
+    'nav-bar':Navigation
   }
 }
 </script>
