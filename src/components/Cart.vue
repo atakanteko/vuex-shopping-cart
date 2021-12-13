@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <h3 style="color:red">Toplam Sepet Tutarı: &#8378;{{getCurrentPrice}}</h3>
+    <h3 style="color:red">Toplam Sepet Tutarı: &#8378;{{getCurrentPrice.toFixed(2)}}</h3>
     <h5 >Sepette Bulunan Kitap Adeti: {{getCurrentNumberOfBooks}}</h5>
       <div
        class="book" 
@@ -15,7 +15,7 @@
           <p>Yazar: {{item.author}}</p>
           <p>Fiyat: &#8378; {{item.price}}</p>
           <button class="btn btn-warning">-</button>
-          <button class="btn btn-primary">Sepetten Çıkar</button>
+          <button class="btn btn-primary" @click="removeItemFromShoppingList(item.id)">Sepetten Çıkar</button>
           <button class="btn btn-warning">+</button>
         </div>
       </div>
@@ -24,12 +24,18 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'Products',
   data(){
     return{
 
+    }
+  },
+  methods:{
+    ...mapActions(['deleteFromCart']),
+    removeItemFromShoppingList(id){
+      this.deleteFromCart(id)
     }
   },
   computed:{

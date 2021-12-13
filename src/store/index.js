@@ -20,13 +20,22 @@ export const store = new Vuex.Store({
         addToCart:({commit},payload) => {
             const book = data.find(i => i.id == payload)
             commit('ADD_TO_CART',book)
+        },
+        deleteFromCart: (context,id) => {
+            
+            context.commit('DELETE_FROM_CART',id)
         }
     },
     mutations: {
-        'ADD_TO_CART':(state,payload) => {
+        'ADD_TO_CART': (state,payload) => {
             console.log(payload);
             state.shoppingCart.unshift(payload)
-        }
+        },
+        'DELETE_FROM_CART': (state,id) => {
+            console.log('dsf',id);
+            state.shoppingCart = state.shoppingCart.filter(m => m.id != id)
+        },
+
     },
     
    
